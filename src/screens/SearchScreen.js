@@ -5,10 +5,10 @@ import MapView, { Polyline, Circle } from "react-native-maps";
 import { requestForegroundPermissionsAsync, watchPositionAsync, Accuracy } from "expo-location";
 import { Feather } from '@expo/vector-icons';
 import Spacer from "../components/Spacer";
-import SearchBar from "../components/SearchBar";
+import SearchBar from "../components/searchScreenComponent/SearchBar";
 // import api from "./components/api";
 import TmdbApi from "../api/TmdbApi";
-import SearchedMovies from "../components/SearchedMovies";
+import SearchedMovies from "../components/searchScreenComponent/SearchedMovies";
 
 const SearchScreen = () => {
     const [term, setTerm] = useState('');

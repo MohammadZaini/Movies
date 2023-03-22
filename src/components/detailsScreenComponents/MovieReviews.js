@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { View, Text ,StyleSheet , FlatList, Image } from "react-native";
 import { Entypo } from '@expo/vector-icons';
-import TmdbApi from "../api/TmdbApi";
+import TmdbApi from "../../api/TmdbApi";
 
 const MovieReviews = ({id}) => {
     const [movieReviews, setMovieReviews] = useState([]);

@@ -3,7 +3,7 @@ import { View, StyleSheet, Button} from "react-native";
 import { Input, Text} from "react-native-elements";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
-import { navigate } from "../navigationActionsRef";
+import { navigate } from "../../navigationActionsRef";
 
 const AuthForm = ({buttonTitle, headerSign, onPress}) => {
     const [email, setEmail] = useState('');

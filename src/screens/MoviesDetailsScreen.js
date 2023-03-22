@@ -1,13 +1,12 @@
 import React, {useState, useEffect} from "react";
 import { Text, StyleSheet, ScrollView } from "react-native";
-import MoviesDetails from "../components/MovieDetail";
-// import api from "./components/api";
+import MoviesDetails from "../components/detailsScreenComponents/MovieDetail";
 import TmdbApi from "../api/TmdbApi";
-import CastList from "../components/CastList";
-import CrewList from "../components/CrewList";
-import SimilarMoviesList from "../components/SimilarMoviesList";
+import CastList from "../components/detailsScreenComponents/CastList";
+import CrewList from "../components/detailsScreenComponents/CrewList";
+import SimilarMoviesList from "../components/detailsScreenComponents/SimilarMoviesList";
 import Videos from "../components/Videos";
-import MovieReviews from "../components/MovieReviews";
+import MovieReviews from "../components/detailsScreenComponents/MovieReviews";
 
 const MoviesDetailsScreen = ({navigation}) => {
     const id = navigation.getParam('id');

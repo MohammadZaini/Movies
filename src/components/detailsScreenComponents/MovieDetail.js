@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { View, Text, StyleSheet, Image, ScrollView} from "react-native";
 import { Entypo } from '@expo/vector-icons';
-import TmdbApi from "../api/TmdbApi";
+import TmdbApi from "../../api/TmdbApi";
 import Trailer from "./Trailer";
 
 const MoviesDetails = ({id, trailerResults}) => {

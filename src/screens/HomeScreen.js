@@ -1,11 +1,11 @@
 import React from "react";
 import {StyleSheet, ScrollView, Text } from "react-native";
-import TrendingPeople from "../components/TrendingPeople";
+import TrendingPeople from "../components/homeScreenComponents/TrendingPeople";
 import useTrendingMoviesResults from "../hooks/useTrendingMoviesResults";
-import TrendingMovies from "../components/TrendingMovies";
-import TopMovies from "../components/TopMovies";
+import TrendingMovies from "../components/homeScreenComponents/TrendingMovies";
+import TopMovies from "../components/homeScreenComponents/TopMovies";
 import useTopRatedMovies from "../hooks/useTopRatedMovies";
-import UpcomingMovies from "../components/UpcomingMovies";
+import UpcomingMovies from "../components/homeScreenComponents/UpcomingMovies";
 import useUpcomingMoviesResults from "../hooks/useUpcomingMoviesResults";
 import useTrendingPeople from "../hooks/useTrendingPeople";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -19,7 +19,7 @@ const HomeScreen = () => {
     return (
         <ScrollView>
             <SafeAreaView>
-        <TopMovies top100MoviesResults={topRatedMovies} />
+        <TopMovies topMoviesResults={topRatedMovies} />
         <TrendingPeople results={trendingPeople} />
 
         <TrendingMovies trendingMoviesResults={trendingMoviesResults} />

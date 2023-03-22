@@ -1,12 +1,12 @@
 import React from "react";
-import {View, StyleSheet, ScrollView} from 'react-native'
+import {StyleSheet, ScrollView} from 'react-native'
 import { Feather } from '@expo/vector-icons';
 import useResults from "../hooks/useResults";
 import { SafeAreaView } from "react-native-safe-area-context";
-import PopularTvShows from "../components/PopularTvShowsList";
-import TopRatedTvShows from "../components/TopRatedTvShows";
+import PopularTvShows from "../components/seriesScreenComponents/PopularTvShowsList";
+import TopRatedTvShows from "../components/seriesScreenComponents/TopRatedTvShows";
 import useTopRatedTvShows from "../hooks/useTopRatedTvShows";
-import OnAirTVShows from "../components/OnAirTvShows";
+import OnAirTVShows from "../components/seriesScreenComponents/OnAirTvShows";
 import useOnAirTvShows from "../hooks/useOnAirTvShows";
 
 const SeriesScreen = () => {

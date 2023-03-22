@@ -1,6 +1,6 @@
 import React from "react";
 import { TouchableOpacity, StyleSheet, Text } from "react-native";
-import { navigate } from "../navigationActionsRef";
+import { navigate } from "../../navigationActionsRef";
 
 
 const NavLink = ({text, navigateTo}) => {

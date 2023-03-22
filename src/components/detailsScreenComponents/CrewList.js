@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {StyleSheet} from "react-native";
-import TmdbApi from "../api/TmdbApi";
-import PeopleList from "./PeopleList";
+import TmdbApi from "../../api/TmdbApi";
+import PeopleList from "../PeopleList";
 
 const CrewList = ({id}) => {
     const [crew, setCrew] = useState([]);

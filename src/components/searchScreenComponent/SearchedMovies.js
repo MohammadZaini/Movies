@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, FlatList, Image, ScrollView, TouchableOpacity } from "react-native";
-import { navigate } from "../navigationActionsRef";
+import { navigate } from "../../navigationActionsRef";
 
 const SearchedMovies = ({searchedMoviesResults}) => {
 

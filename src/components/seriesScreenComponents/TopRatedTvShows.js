@@ -1,6 +1,6 @@
 import React from "react";
 import {StyleSheet} from "react-native";
-import List from "./List";
+import List from "../List";
 
 const TopRatedTvShows = ({topRatedTvShows}) => {
     return (

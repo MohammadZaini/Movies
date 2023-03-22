@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import AuthForm from "../components/AuthForm";
-import NavLink from "../components/NavLink";
+import AuthForm from "../components/authenticationComponents/AuthForm";
+import NavLink from "../components/authenticationComponents/NavLink";
 import Spacer from "../components/Spacer";
 const SignUpScreen = ({navigation}) => {
     
