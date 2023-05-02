@@ -1,13 +1,26 @@
 import React from "react";
-import { Text, View, StyleSheet, Button} from "react-native";
+import { View, StyleSheet, Button} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from '@expo/vector-icons';
+import { getAuth , signOut } from "firebase/auth";
+import { auth } from "../../firebase-config";
 
-const SettingsScreen = () => {
-    
+const SettingsScreen = ({navigation}) => {
+
+    const logOut = async () => {
+        try {
+            await signOut(auth);
+            navigation.navigate('SignIn')
+
+        } catch(error) {
+            console.log(error)
+        }
+    }
+
     return <View>
         <SafeAreaView>
         <Button 
+        onPress={() => logOut()}
         title="Sign Out" 
         color={'red'}
         />

@@ -3,15 +3,10 @@ import { View, StyleSheet, Button} from "react-native";
 import { Input, Text} from "react-native-elements";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
-import { navigate } from "../../navigationActionsRef";
 
 const AuthForm = ({buttonTitle, headerSign, onPress}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
-    const validation = () => {
-        password.length > 6 ? navigate('homeFlow') : ''
-    }
 
     return <View style={styles.container} >
 
@@ -24,7 +19,8 @@ const AuthForm = ({buttonTitle, headerSign, onPress}) => {
         onChangeText={setEmail}
         placeholder='Email'
         autoCapitalize="none"
-        autoCorrect={false}   
+        autoCorrect={false}  
+        // underlineColorAndroid={'green'}
         />
         </View>
 
@@ -40,7 +36,8 @@ const AuthForm = ({buttonTitle, headerSign, onPress}) => {
         </View>
     <Button
     title={buttonTitle}
-    onPress={validation}
+    // onPress={validation}
+    onPress={() => onPress(email, password)}
     color={'red'}
     />
     </View>
