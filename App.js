@@ -12,9 +12,6 @@ import SeriesScreen from "./src/screens/SeriesScreen";
 import {Provider} from './src/context/AuthContext'
 import MoviesDetailsScreen from "./src/screens/MoviesDetailsScreen";
 import { Feather } from '@expo/vector-icons';
-// import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
-// import { initializeApp } from "firebase/app";
-// import { firebaseConfig } from "./firebase-config";
 
 const homeFlow = createStackNavigator({
   Home: HomeScreen,
@@ -25,7 +22,7 @@ homeFlow.navigationOptions = {
   title: "Movies",
   headerShown: false,
   tabBarIcon: ({focused}) =>  (
-  <MaterialIcons name="movie" size={24} color={focused ?'red' : 'black'} />
+  <MaterialIcons name="movie" size={24} color={focused ? 'red' : 'black'} />
   )
 };
 

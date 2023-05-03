@@ -1,26 +1,16 @@
-import React from "react";
+import React, {useContext} from "react";
 import { View, StyleSheet, Button} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from '@expo/vector-icons';
-import { getAuth , signOut } from "firebase/auth";
-import { auth } from "../../firebase-config";
+import { Context as AuthContext } from "../context/AuthContext";
 
-const SettingsScreen = ({navigation}) => {
-
-    const logOut = async () => {
-        try {
-            await signOut(auth);
-            navigation.navigate('SignIn')
-
-        } catch(error) {
-            console.log(error)
-        }
-    }
+const SettingsScreen = () => {
+    const {signout} = useContext(AuthContext);
 
     return <View>
         <SafeAreaView>
         <Button 
-        onPress={() => logOut()}
+        onPress={signout}
         title="Sign Out" 
         color={'red'}
         />
@@ -33,8 +23,8 @@ SettingsScreen.navigationOptions = () => {
         tabBarIcon: ({focused}) => ( 
         <Ionicons name="settings-outline" size={24} color={focused ? 'red' : 'black'} />
         )
-    }
-}
+    };
+};
 
 const styles = StyleSheet.create({});
 

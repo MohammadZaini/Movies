@@ -4,7 +4,7 @@ import { Input, Text} from "react-native-elements";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 
-const AuthForm = ({buttonTitle, headerSign, onPress}) => {
+const AuthForm = ({buttonTitle, headerSign, onSubmit, errorMessage}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -34,10 +34,11 @@ const AuthForm = ({buttonTitle, headerSign, onPress}) => {
         
         />
         </View>
+        {errorMessage ? <Text style={styles.errorMessage} >{errorMessage}</Text>: null}
     <Button
     title={buttonTitle}
     // onPress={validation}
-    onPress={() => onPress(email, password)}
+    onPress={() => onSubmit({email, password})}
     color={'red'}
     />
     </View>
@@ -50,6 +51,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     }, passwordInput: {
         flexDirection: 'row'
+    },
+    errorMessage: {
+        color: 'red',
+        marginLeft: 5,
+        marginBottom: 10,
+        fontSize: 17
     }
 });
 

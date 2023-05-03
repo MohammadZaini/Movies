@@ -1,5 +1,5 @@
 import React from "react";
-import {StyleSheet, ScrollView, Text } from "react-native";
+import {StyleSheet, ScrollView} from "react-native";
 import TrendingPeople from "../components/homeScreenComponents/TrendingPeople";
 import useTrendingMoviesResults from "../hooks/useTrendingMoviesResults";
 import TrendingMovies from "../components/homeScreenComponents/TrendingMovies";
@@ -19,12 +19,10 @@ const HomeScreen = () => {
     return (
         <ScrollView>
             <SafeAreaView>
-        <TopMovies topMoviesResults={topRatedMovies} />
-        <TrendingPeople results={trendingPeople} />
-
-        <TrendingMovies trendingMoviesResults={trendingMoviesResults} />
-
-        <UpcomingMovies upcomingMoviesResults={upcomingMovies} />
+                <TopMovies topMoviesResults={topRatedMovies} />
+                <TrendingPeople results={trendingPeople} />
+                <TrendingMovies trendingMoviesResults={trendingMoviesResults} />
+                <UpcomingMovies upcomingMoviesResults={upcomingMovies} />
             </SafeAreaView>
         </ScrollView>
 )};
@@ -34,7 +32,7 @@ const styles = StyleSheet.create({});
 HomeScreen.navigationOptions = () => {
     return {
         headerShown: false
-    }
-}
+    };
+};
 
 export default HomeScreen;

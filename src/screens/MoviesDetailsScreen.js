@@ -23,7 +23,7 @@ const MoviesDetailsScreen = ({navigation}) => {
 
     useEffect(() => {
         getTrailerById(id)    
-    },[])
+    },[]);
 
     return (
     <ScrollView style={{ flex: 1}} >
@@ -52,14 +52,14 @@ const MoviesDetailsScreen = ({navigation}) => {
         <MovieReviews id={id} />
         
     </ScrollView>
-    )
+    );
 };
 
 MoviesDetailsScreen.navigationOptions = () => {
     return {
         headerShown: false
-    }
-}
+    };
+};
 
 const styles = StyleSheet.create({
     header: {

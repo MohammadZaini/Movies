@@ -43,7 +43,7 @@ console.log(movieDetails.first_air_date)
     return (
     <View>
         <Text style={{ color: 'grey', fontSize: 20, margin: 10, fontWeight: 'bold', marginTop: 40}}>{movieDetails.original_title}</Text>
-        {/* <Trailer trailer={trailerResults} /> */}
+        <Trailer trailer={trailerResults} />
 
         <Text style={{ color: 'grey', fontSize: 20, margin: 10, fontWeight: 'bold'}} >OVERVIEW</Text>
 
