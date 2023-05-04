@@ -32,7 +32,7 @@ SeriesScreen.navigationOptions = () => {
         tabBarIcon: ({focused}) => (
         <Feather name="tv" size={24} color={focused ? 'red': 'black'} />
         )
-    }
-}
+    };
+};
 
 export default SeriesScreen;

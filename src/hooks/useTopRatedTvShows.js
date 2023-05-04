@@ -10,12 +10,12 @@ export default () => {
             setTopRatedTvShows(response.data.results)
         } catch (err) {
             console.log(Error(err))
-        } 
+        };
     };
 
     useEffect(() => {
         getTopRatedTvShows()
-    },[])
+    },[]);
 
     return [topRatedTvShows];
 };

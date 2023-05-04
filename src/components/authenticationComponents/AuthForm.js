@@ -37,7 +37,6 @@ const AuthForm = ({buttonTitle, headerSign, onSubmit, errorMessage}) => {
         {errorMessage ? <Text style={styles.errorMessage} >{errorMessage}</Text>: null}
     <Button
     title={buttonTitle}
-    // onPress={validation}
     onPress={() => onSubmit({email, password})}
     color={'red'}
     />

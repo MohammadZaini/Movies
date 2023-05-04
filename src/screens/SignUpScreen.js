@@ -1,4 +1,4 @@
-import React, { useContext} from "react";
+import React, {useContext} from "react";
 import { View, StyleSheet } from "react-native";
 import AuthForm from "../components/authenticationComponents/AuthForm";
 import NavLink from "../components/authenticationComponents/NavLink";
@@ -8,7 +8,7 @@ import { Context as AuthContext } from "../context/AuthContext";
 
 const SignUpScreen = () => {
     const {state, signUp} = useContext(AuthContext);
-
+    
     return <View>
         <AuthForm  
         headerSign={'Sign Up'} 

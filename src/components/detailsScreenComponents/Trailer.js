@@ -6,7 +6,7 @@ const Trailer = ({trailer}) => {
     const getKey = () => {
         return trailer.map( item => {
             return item.key
-        })
+        });
     };
 
     return <>

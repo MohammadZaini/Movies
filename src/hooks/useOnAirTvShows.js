@@ -15,7 +15,7 @@ export default () => {
 
     useEffect(() => {
         getOnAirTvShows()
-    },[])
+    },[]);
 
     return [onAirTvShows];
 };

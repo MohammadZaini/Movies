@@ -4,26 +4,26 @@ import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } f
 import { auth } from "../../firebase-config";
 import { navigate } from "../navigationActionsRef";
 
-const authReducer = (state, action) => {
-    switch (action.type) {
-        case 'signin': 
-            return {errorMessage: '', accessToken: action.payload};
+    const authReducer = (state, action) => {
+        switch (action.type) {
+            case 'signin': 
+                return {errorMessage: '', accessToken: action.payload};
 
-        case 'signup':
-            return {...state, accessToken: action.payload };
+            case 'signup':
+                return {...state, accessToken: action.payload };
 
-        case 'signout': 
-            return {accessToken: null};
+            case 'signout': 
+                return {accessToken: null};
 
-        case 'add_error':
-            return {...state, errorMessage: action.payload};
+            case 'add_error':
+                return {...state, errorMessage: action.payload};
 
-        default:
-            return state;
-    }
-};
+            default:
+                return state;
+        };
+    };
 
-const signUp = dispatch => async ({email, password}) => {
+    const signUp = dispatch => async ({email, password}) => {
         await createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
         // Signed in 
@@ -46,7 +46,7 @@ const signUp = dispatch => async ({email, password}) => {
         });
     };
 
-const signIn = dispatch => async ({email, password}) => {
+    const signIn = dispatch => async ({email, password}) => {
         await signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
         // Signed in 
@@ -78,8 +78,19 @@ const signIn = dispatch => async ({email, password}) => {
         navigate('SignIn')
 };
 
+const tryLocalSignin = dispatch => async () => {
+    const token = await AsyncStorage.getItem('accessToken');
+    if (token) {
+        dispatch({ type: 'signin', payload: token});
+        navigate('homeFlow');
+    } else {
+        console.log('no token')
+        navigate('SignIn')
+    };
+};
+
 export const {Provider, Context} = createDataContext(
     authReducer,
-    {signIn, signUp, signout},
-    {accessToken: null, errorMessage:''}
+    {signIn, signUp, signout, tryLocalSignin},
+    { accessToken: null, errorMessage:'' } 
 );

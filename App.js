@@ -6,12 +6,14 @@ import SearchScreen from "./src/screens/SearchScreen";
 import SignInScreen from "./src/screens/SignInScreen";
 import SignUpScreen from "./src/screens/SignUpScreen";
 import SettingsScreen from "./src/screens/SettingsScreen";
+import ResloveAuthScreen from "./src/screens/ResloveAuthScreen";
 import { setNavigator } from "./src/navigationActionsRef";
 import { MaterialIcons } from '@expo/vector-icons';
 import SeriesScreen from "./src/screens/SeriesScreen";
 import {Provider} from './src/context/AuthContext'
 import MoviesDetailsScreen from "./src/screens/MoviesDetailsScreen";
 import { Feather } from '@expo/vector-icons';
+
 
 const homeFlow = createStackNavigator({
   Home: HomeScreen,
@@ -53,6 +55,7 @@ seriesFlow.navigationOptions = {
 
 const navigator = createSwitchNavigator({
   logInFlow: createStackNavigator({
+    ResloveAuth: ResloveAuthScreen,
     SignIn: SignInScreen,
     SignUp: SignUpScreen
   }),
