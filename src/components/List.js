@@ -2,7 +2,7 @@ import React from "react";
 import { View,TouchableOpacity, FlatList, StyleSheet, Image, Text } from "react-native";
 import { navigate } from "../navigationActionsRef";
 
-const List = ({data, header}) => {
+const List = ({data, header, screenRoute}) => {
     return( 
         <View style={styles.containter}>
         {header ? <Text style={styles.header}>{header}</Text> : ''}
@@ -13,7 +13,7 @@ const List = ({data, header}) => {
         keyExtractor={(item) => item.id}
         renderItem={({item}) => {
             return (
-                <TouchableOpacity onPress={() => navigate('MoviesDetails', {id : item.id})} >
+                <TouchableOpacity onPress={() => navigate('MoviesDetails', {id : item.id, screenRoute})} >
                     <Image
                     style={styles.image}
                     source={{uri: `https://image.tmdb.org/t/p/original${item.poster_path}`}}

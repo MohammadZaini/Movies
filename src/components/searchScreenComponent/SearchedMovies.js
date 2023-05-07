@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, FlatList, Image, ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity } from "react-native";
 import { navigate } from "../../navigationActionsRef";
 
 const SearchedMovies = ({searchedMoviesResults}) => {
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         marginTop: 10
     }, 
-    text : {
+    text: {
         textAlign: 'center',
         fontSize: 18,
         width: 150,

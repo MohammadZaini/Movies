@@ -52,7 +52,7 @@ import { navigate } from "../navigationActionsRef";
         // Signed in 
             const user = userCredential.user;
             AsyncStorage.setItem('accessToken', user.accessToken )
-
+            
             dispatch({
                 type:'signin',
                 payload: user.accessToken

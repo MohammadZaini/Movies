@@ -10,6 +10,8 @@ import MovieReviews from "../components/detailsScreenComponents/MovieReviews";
 
 const MoviesDetailsScreen = ({navigation}) => {
     const id = navigation.getParam('id');
+    const screenRoute = navigation.getParam('screenRoute')
+
     const [trailer, setTrailer] = useState([]);
 
     const getTrailerById = async (id) => {
@@ -30,6 +32,7 @@ const MoviesDetailsScreen = ({navigation}) => {
         <MoviesDetails 
         id={id}
         trailerResults={trailer}
+        routeName={screenRoute}
         />
 
         <Text style={styles.header} >Cast</Text>

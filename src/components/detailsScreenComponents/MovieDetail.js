@@ -4,27 +4,27 @@ import { Entypo } from '@expo/vector-icons';
 import TmdbApi from "../../api/TmdbApi";
 import Trailer from "./Trailer";
 
-const MoviesDetails = ({id, trailerResults}) => {
+const MoviesDetails = ({id, routeName, trailerResults}) => {
     const [movieDetails, setMovieDetails] = useState([]);
 
     const getMovieDetailsById = async (id) => {
         try {
-            const response =  await TmdbApi.get(`/${getId()}/${id}`)
-            setMovieDetails(response.data)
+            const response =  await TmdbApi.get(`/${getType()}/${id}`);
+            setMovieDetails(response.data);
         } catch(error) {
-            console.log('$$movie details component$$')
-            console.log(Error(error))
+            console.log('$$movie details component$$');
+            console.log(Error(error));
         };
     };
     
-    const getId = () => {
-        if (movieDetails.first_air_date) {
-            return 'tv'
+    const getType = () => {
+        if (routeName === 'Series') {
+            return 'tv';
         } else {
-            return 'movie'
-        }
+            return 'movie';
+            };
     };
-console.log(movieDetails.first_air_date)
+
     const getGenre = () => {
         if (movieDetails.genres) {
             return movieDetails.genres.map((genre) => {
@@ -33,7 +33,7 @@ console.log(movieDetails.first_air_date)
                     <Text style={styles.text} >{genre.name}</Text>
                 </View>
             )});
-    } 
+        };
     };
     
     useEffect(() => {
@@ -50,12 +50,12 @@ console.log(movieDetails.first_air_date)
             <View style={{flexDirection: 'row'}} >
                 <Image style={styles.image} source={{uri: `https://image.tmdb.org/t/p/original${movieDetails.poster_path}`}} />
 
-                <ScrollView style={{height: 260}} >
+                <ScrollView style={{height: 260 }} >
                     <View style={{flexDirection:'row', marginBottom: 10 , flexWrap: 'wrap'}} > 
                         {getGenre()}
                     </View>
                     
-                    <Text style={{marginHorizontal: 10, textAlign: 'auto', fontSize: 17, width: 210}} >{movieDetails.overview}</Text>
+                    <Text style={{marginHorizontal: 10, textAlign: 'auto', fontSize: 17, flex: 1}} >{movieDetails.overview}</Text>
                     
                 </ScrollView>
             </View>
@@ -64,7 +64,7 @@ console.log(movieDetails.first_air_date)
             <Text style={styles.text} >{<Entypo name="star" size={23} color="yellow" />}{`${movieDetails.vote_average}`.slice(0,3)}</Text>
             <Text style={styles.text} >{`${movieDetails.release_date}`.slice(0,4)}</Text>
             <Text style={styles.text} >{`Duration: ${movieDetails.runtime} m`}</Text>
-            {movieDetails.budget !== 0 ? <Text style={styles.text} >Budget: {movieDetails.budget}</Text>: ''}
+            {movieDetails.budget !== 0 ? <Text style={styles.text} > Budget: {movieDetails.budget}</Text>: ''}
         </View>
     </View> 
 )};
@@ -85,11 +85,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: 'grey',
         borderRadius: 8,
-        padding: 3,
-    },
-    textBorder: {
-        borderWidth: 1,
-        borderColor: 'grey'
+        padding: 4,
     }
 });
 

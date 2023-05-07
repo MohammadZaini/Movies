@@ -9,17 +9,26 @@ import useTopRatedTvShows from "../hooks/useTopRatedTvShows";
 import OnAirTVShows from "../components/seriesScreenComponents/OnAirTvShows";
 import useOnAirTvShows from "../hooks/useOnAirTvShows";
 
-const SeriesScreen = () => {
+const SeriesScreen = ({navigation}) => {
     const [popularTvShows] = useResults();
     const [topRatedTvShows] = useTopRatedTvShows();
     const [onAirTvShows] = useOnAirTvShows();
-
+    
     return (
         <ScrollView>
             <SafeAreaView>
-                <OnAirTVShows onAirTvShows={onAirTvShows} />
-                <TopRatedTvShows topRatedTvShows={topRatedTvShows} />
-                <PopularTvShows popularTvShows={popularTvShows} />
+                <OnAirTVShows 
+                onAirTvShows={onAirTvShows}
+                screenRoute={navigation.state.routeName}
+                />
+                <TopRatedTvShows 
+                topRatedTvShows={topRatedTvShows} 
+                screenRoute={navigation.state.routeName}
+                />
+                <PopularTvShows 
+                popularTvShows={popularTvShows}
+                screenRoute={navigation.state.routeName}
+                />
             </SafeAreaView>
         </ScrollView>
 )};

@@ -10,7 +10,7 @@ import useUpcomingMoviesResults from "../hooks/useUpcomingMoviesResults";
 import useTrendingPeople from "../hooks/useTrendingPeople";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
     const [trendingPeople] = useTrendingPeople();
     const [trendingMoviesResults] = useTrendingMoviesResults();
     const [topRatedMovies] = useTopRatedMovies();
@@ -19,10 +19,19 @@ const HomeScreen = () => {
     return (
         <ScrollView>
             <SafeAreaView>
-                <TopMovies topMoviesResults={topRatedMovies} />
+                <TopMovies 
+                topMoviesResults={topRatedMovies}
+                screenRoute={navigation.state.routeName}
+                />
                 <TrendingPeople results={trendingPeople} />
-                <TrendingMovies trendingMoviesResults={trendingMoviesResults} />
-                <UpcomingMovies upcomingMoviesResults={upcomingMovies} />
+                <TrendingMovies 
+                trendingMoviesResults={trendingMoviesResults}
+                screenRoute={navigation.state.routeName}
+                />
+                <UpcomingMovies 
+                upcomingMoviesResults={upcomingMovies}
+                screenRoute={navigation.state.routeName}
+                />
             </SafeAreaView>
         </ScrollView>
 )};
