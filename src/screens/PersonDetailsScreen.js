@@ -25,7 +25,7 @@ const PersonDetailsScreen = ({navigation}) => {
     },[]);
 
     if(!isLoaded) {
-        return <ActivityIndicator size="large" color={'red'}/>
+        return <ActivityIndicator size="large" color={'red'} style={{marginTop: 350}}/>
     }
     return (
     <View>

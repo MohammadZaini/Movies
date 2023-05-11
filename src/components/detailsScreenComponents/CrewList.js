@@ -3,16 +3,24 @@ import {StyleSheet} from "react-native";
 import TmdbApi from "../../api/TmdbApi";
 import PeopleList from "../PeopleList";
 
-const CrewList = ({id}) => {
+const CrewList = ({id, routeName}) => {
     const [crew, setCrew] = useState([]);
 
     const getCrewById = async (id) => {
         try {
-            const response = await TmdbApi.get(`/movie/${id}/credits`)
+            const response = await TmdbApi.get(`/${getType()}/${id}/credits`)
             setCrew(response.data.crew)
         } catch(error) {
             console.log(Error(error))
         }
+    };
+
+    const getType = () => {
+        if(routeName === 'Series') {
+            return 'tv';
+        } else {
+            return 'movie';
+        };
     };
 
     const filterDuplicatesCrew = crew.reduce((filteredArray, current) => {

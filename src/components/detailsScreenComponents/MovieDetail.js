@@ -88,10 +88,7 @@ console.log(movieDetails)
 
             {movieDetails.runtime === undefined 
             ? <Text style={styles.text} >{`Episodes: ${movieDetails.number_of_episodes} `}</Text> 
-            : <Text style={styles.text} >{`Budget: ${movieDetails.budget} m`}</Text>}
-            
-            
-            {/* {movieDetails.budget !== 0 ? <Text style={styles.text} > Budget: {movieDetails.budget}</Text>: ''} */}
+            : <Text style={styles.text}>{movieDetails.budget !== 0 ? <Text style={styles.text} > Budget: {movieDetails.budget}</Text>: ''}</Text>}        
         </View>
     </View> 
 )};

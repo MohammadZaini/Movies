@@ -39,7 +39,7 @@ const MoviesDetailsScreen = ({navigation}) => {
     };
 
     if(!isLoaded) {
-        return <ActivityIndicator size={"large"} color={'red'}/>;
+        return <ActivityIndicator size="large" color={'red'} style={{marginTop: 350}}/>;
     };
 
     return (
@@ -54,11 +54,14 @@ const MoviesDetailsScreen = ({navigation}) => {
             <Text style={styles.header} >Cast</Text>
             <CastList 
             id={id}
+            routeName={screenRoute}
             />
 
             <Text style={styles.header} >Crew</Text>
             <CrewList 
-            id={id} /> 
+            id={id} 
+            routeName={screenRoute}
+            /> 
 
             <Text style={styles.header}>Videos</Text>
             <Videos  trailerResults={trailer}  />
