@@ -17,12 +17,11 @@ const CrewList = ({id}) => {
 
     const filterDuplicatesCrew = crew.reduce((filteredArray, current) => {
     let obj = filteredArray.find(item => item.id === current.id);
-
-    if(obj){
+    if(obj) {
         return filteredArray;
-    } 
-    return filteredArray.concat([current])
-    },[])
+    };
+    return filteredArray.concat([current]);
+    },[]);
 
     useEffect(() => {
         getCrewById(id)

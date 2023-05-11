@@ -19,7 +19,7 @@ const List = ({data, header, screenRoute}) => {
                     source={{uri: `https://image.tmdb.org/t/p/original${item.poster_path}`}}
                     />
                 </TouchableOpacity>
-            )
+            );
         }}   
         />
     </View>

@@ -7,6 +7,7 @@ import SignInScreen from "./src/screens/SignInScreen";
 import SignUpScreen from "./src/screens/SignUpScreen";
 import SettingsScreen from "./src/screens/SettingsScreen";
 import ResloveAuthScreen from "./src/screens/ResloveAuthScreen";
+import PersonDetailsScreen from "./src/screens/PersonDetailsScreen";
 import { setNavigator } from "./src/navigationActionsRef";
 import { MaterialIcons } from '@expo/vector-icons';
 import SeriesScreen from "./src/screens/SeriesScreen";
@@ -18,6 +19,7 @@ import { Feather } from '@expo/vector-icons';
 const homeFlow = createStackNavigator({
   Home: HomeScreen,
   MoviesDetails: MoviesDetailsScreen,
+  PersonDetails: PersonDetailsScreen,
 })
 
 homeFlow.navigationOptions = {

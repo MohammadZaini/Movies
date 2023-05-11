@@ -4,15 +4,21 @@ import YoutubePlayer from 'react-native-youtube-iframe'
 const Trailer = ({trailer}) => {
 
     const getKey = () => {
-        return trailer.map( item => {
-            return item.key
-        });
+        if(trailer){
+            return trailer.map( item => {
+                return item.key;
+            });
+        }
     };
 
+    const getFirstKey = (keys) => {
+        return keys[0];
+    };
+console.log(getFirstKey(getKey()))
     return <>
         <YoutubePlayer
         height={230}
-        videoId={getKey()[0]}
+        videoId={getFirstKey(getKey())}
         play={false}
         />
     </>

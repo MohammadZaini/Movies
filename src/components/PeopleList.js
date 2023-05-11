@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity } from "react-native";
+import { navigate } from "../navigationActionsRef";
 
 const PeopleList = ({data, header}) => {
     return (  
@@ -12,7 +13,7 @@ const PeopleList = ({data, header}) => {
             keyExtractor={(person, index) => person.id + index.toString()}
             renderItem={({item})=> {
                 return (
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigate('PersonDetails', {id : item.id})} >
                         <Image 
                             style={styles.image}
                             source={
@@ -20,6 +21,7 @@ const PeopleList = ({data, header}) => {
                                 {uri:`https://image.tmdb.org/t/p/original${item.profile_path}`} 
                                 : require('../../assets/1668898.png')
                             } />
+                            {/* {console.log(item.id)} */}
                             <Text style={styles.name}>{item.name}</Text>
                     </TouchableOpacity>
                 );

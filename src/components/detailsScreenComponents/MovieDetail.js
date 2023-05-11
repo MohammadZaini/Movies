@@ -24,7 +24,7 @@ const MoviesDetails = ({id, routeName, trailerResults}) => {
             return 'movie';
             };
     };
-
+console.log(movieDetails)
     const getGenre = () => {
         if (movieDetails.genres) {
             return movieDetails.genres.map((genre) => {
@@ -37,34 +37,61 @@ const MoviesDetails = ({id, routeName, trailerResults}) => {
     };
     
     useEffect(() => {
-        getMovieDetailsById(id)  
+        getMovieDetailsById(id);
     },[]);
-
+    
     return (
     <View>
-        <Text style={{ color: 'grey', fontSize: 20, margin: 10, fontWeight: 'bold', marginTop: 40}}>{movieDetails.original_title}</Text>
-        {/* <Trailer trailer={trailerResults} /> */}
+        {movieDetails.original_title === undefined 
+        ? <Text style={styles.title}>{movieDetails.name}</Text>
+        : <Text style={styles.title}>{movieDetails.original_title}</Text>}
 
-        <Text style={{ color: 'grey', fontSize: 20, margin: 10, fontWeight: 'bold'}} >OVERVIEW</Text>
+        {/* <Trailer trailer={trailerResults} /> */}
+        {trailerResults === undefined ? <Trailer trailer={trailerResults} /> : ''}
+        {console.log(trailerResults)}
+
+        <Text style={styles.title} >OVERVIEW</Text>
 
             <View style={{flexDirection: 'row'}} >
+                
                 <Image style={styles.image} source={{uri: `https://image.tmdb.org/t/p/original${movieDetails.poster_path}`}} />
+                
 
-                <ScrollView style={{height: 260 }} >
-                    <View style={{flexDirection:'row', marginBottom: 10 , flexWrap: 'wrap'}} > 
+                <View style={{height: 260}} >
+
+                    <View style={{flexDirection:'row', marginBottom: 10 , flexWrap: 'wrap', width: 200}} > 
                         {getGenre()}
                     </View>
+        
+                    <ScrollView style={{height: 300, flexDirection: 'column'}} >
+                        <View style={{width: 230}} >
+                            <Text style={{marginHorizontal: 10, textAlign: 'left', fontSize: 17, flex: 1}} >{movieDetails.overview}</Text>
+                        </View>
+                    </ScrollView>
                     
-                    <Text style={{marginHorizontal: 10, textAlign: 'auto', fontSize: 17, flex: 1}} >{movieDetails.overview}</Text>
-                    
-                </ScrollView>
+
+                </View>
             </View>
         
         <View style={{flexDirection: 'row' , flexWrap: 'wrap'}}>
-            <Text style={styles.text} >{<Entypo name="star" size={23} color="yellow" />}{`${movieDetails.vote_average}`.slice(0,3)}</Text>
-            <Text style={styles.text} >{`${movieDetails.release_date}`.slice(0,4)}</Text>
-            <Text style={styles.text} >{`Duration: ${movieDetails.runtime} m`}</Text>
-            {movieDetails.budget !== 0 ? <Text style={styles.text} > Budget: {movieDetails.budget}</Text>: ''}
+            {movieDetails.vote_average === undefined 
+            ? '' 
+            : <Text style={styles.text} >{<Entypo name="star" size={23} color="yellow" />}{`${movieDetails.vote_average}`.slice(0,3)}</Text>}
+            
+            {movieDetails.release_date === undefined 
+            ? '' 
+            : <Text style={styles.text} >{`${movieDetails.release_date}`.slice(0,4)}</Text>}
+
+            {movieDetails.budget === undefined 
+            ? <Text style={styles.text} >{`Seasons: ${movieDetails.number_of_seasons} `}</Text> 
+            : <Text style={styles.text} >{`Duration: ${movieDetails.runtime} m`}</Text>}
+
+            {movieDetails.runtime === undefined 
+            ? <Text style={styles.text} >{`Episodes: ${movieDetails.number_of_episodes} `}</Text> 
+            : <Text style={styles.text} >{`Budget: ${movieDetails.budget} m`}</Text>}
+            
+            
+            {/* {movieDetails.budget !== 0 ? <Text style={styles.text} > Budget: {movieDetails.budget}</Text>: ''} */}
         </View>
     </View> 
 )};
@@ -86,6 +113,12 @@ const styles = StyleSheet.create({
         borderColor: 'grey',
         borderRadius: 8,
         padding: 4,
+    }, 
+    title: {
+        color: 'grey',
+        fontSize: 20, 
+        margin: 10, 
+        fontWeight: 'bold', 
     }
 });
 
