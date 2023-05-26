@@ -11,10 +11,10 @@ import PersonDetailsScreen from "./src/screens/PersonDetailsScreen";
 import { setNavigator } from "./src/navigationActionsRef";
 import { MaterialIcons } from '@expo/vector-icons';
 import SeriesScreen from "./src/screens/SeriesScreen";
-import {Provider} from './src/context/AuthContext'
+import { Provider } from './src/context/AuthContext'
 import MoviesDetailsScreen from "./src/screens/MoviesDetailsScreen";
 import { Feather } from '@expo/vector-icons';
-
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 const homeFlow = createStackNavigator({
   Home: HomeScreen,
@@ -25,8 +25,8 @@ const homeFlow = createStackNavigator({
 homeFlow.navigationOptions = {
   title: "Movies",
   headerShown: false,
-  tabBarIcon: ({focused}) =>  (
-  <MaterialIcons name="movie" size={24} color={focused ? 'red' : 'black'} />
+  tabBarIcon: ({ focused }) => (
+    <MaterialIcons name="movie" size={24} color={focused ? 'red' : 'grey'} />
   )
 };
 
@@ -38,8 +38,8 @@ const searchFlow = createStackNavigator({
 
 searchFlow.navigationOptions = {
   title: "Search",
-  tabBarIcon: ({focused}) =>  (
-    <Feather name="search" size={24} color={focused ? 'red': 'black'} />
+  tabBarIcon: ({ focused }) => (
+    <Feather name="search" size={24} color={focused ? 'red' : 'grey'} />
   )
 };
 
@@ -50,14 +50,14 @@ const seriesFlow = createStackNavigator({
 
 seriesFlow.navigationOptions = {
   title: "Series",
-  tabBarIcon: ({focused}) => (
-    <Feather name="tv" size={24} color={focused ? 'red': 'black'} />
+  tabBarIcon: ({ focused }) => (
+    <Feather name="tv" size={24} color={focused ? 'red' : 'grey'} />
   )
-}
+};
 
 const navigator = createSwitchNavigator({
+  ResloveAuth: ResloveAuthScreen,
   logInFlow: createStackNavigator({
-    ResloveAuth: ResloveAuthScreen,
     SignIn: SignInScreen,
     SignUp: SignUpScreen
   }),
@@ -67,24 +67,26 @@ const navigator = createSwitchNavigator({
     Search: searchFlow,
     Series: seriesFlow,
     Settings: SettingsScreen,
-  },{
-    activeColor:'red',
-    inactiveColor:'grey',
+  }, {
+    activeColor: 'red',
+    inactiveColor: 'grey',
     defaultNavigationOptions: {
-        tabBarColor: 'black',  
+      tabBarColor: 'black',
     },
   })
 
 }, {
-  initialRouteName: 'logInFlow'
+  initialRouteName: 'ResloveAuth'
 });
 
 
 const App = createAppContainer(navigator);
 export default () => {
   return (
-    <Provider>
-    <App ref={navigator => setNavigator(navigator)} />
-    </Provider>
+    <SafeAreaProvider >
+      <Provider>
+        <App ref={navigator => setNavigator(navigator)} />
+      </Provider>
+    </SafeAreaProvider>
   )
 }

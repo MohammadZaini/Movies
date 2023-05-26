@@ -1,11 +1,11 @@
 import React from "react";
 import YoutubePlayer from 'react-native-youtube-iframe'
 
-const Trailer = ({trailer}) => {
+const Trailer = ({ trailer }) => {
 
     const getKey = () => {
-        if(trailer){
-            return trailer.map( item => {
+        if (trailer) {
+            return trailer.map(item => {
                 return item.key;
             });
         }
@@ -14,12 +14,12 @@ const Trailer = ({trailer}) => {
     const getFirstKey = (keys) => {
         return keys[0];
     };
-console.log(getFirstKey(getKey()))
+
     return <>
         <YoutubePlayer
-        height={230}
-        videoId={getFirstKey(getKey())}
-        play={false}
+            height={230}
+            videoId={getFirstKey(getKey())}
+            play={false}
         />
     </>
 };

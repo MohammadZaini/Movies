@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import TmdbApi from "../api/TmdbApi";
+
 export default () => {
     const [trendingPeople, setTrendingPeople] = useState([]);
 
@@ -14,7 +15,7 @@ export default () => {
 
     useEffect(() => {
         getTrendingPeople();
-    },[])
+    }, [])
 
     return [trendingPeople];
 };

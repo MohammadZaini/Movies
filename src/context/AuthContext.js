@@ -4,37 +4,37 @@ import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } f
 import { auth } from "../../firebase-config";
 import { navigate } from "../navigationActionsRef";
 
-    const authReducer = (state, action) => {
-        switch (action.type) {
-            case 'signin': 
-                return {errorMessage: '', accessToken: action.payload};
+const authReducer = (state, action) => {
+    switch (action.type) {
+        case 'signin':
+            return { errorMessage: '', accessToken: action.payload };
 
-            case 'signup':
-                return {...state, accessToken: action.payload };
+        case 'signup':
+            return { ...state, accessToken: action.payload };
 
-            case 'signout': 
-                return {accessToken: null};
+        case 'signout':
+            return { accessToken: null };
 
-            case 'add_error':
-                return {...state, errorMessage: action.payload};
+        case 'add_error':
+            return { ...state, errorMessage: action.payload };
 
-            default:
-                return state;
-        };
+        default:
+            return state;
     };
+};
 
-    const signUp = dispatch => async ({email, password}) => {
-        await createUserWithEmailAndPassword(auth, email, password)
+const signUp = dispatch => async ({ email, password }) => {
+    await createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-        // Signed in 
-        const user = userCredential.user;
+            // Signed in 
+            const user = userCredential.user;
 
-        dispatch({
-            type: 'signup',
-            payload: user.accessToken
-        })
-        navigate('homeFlow')
-        // ...
+            dispatch({
+                type: 'signup',
+                payload: user.accessToken
+            })
+            navigate('homeFlow')
+            // ...
         })
         .catch((error) => {
             dispatch({
@@ -44,17 +44,17 @@ import { navigate } from "../navigationActionsRef";
             const errorCode = error.code;
             const errorMessage = error.message;
         });
-    };
+};
 
-    const signIn = dispatch => async ({email, password}) => {
-        await signInWithEmailAndPassword(auth, email, password)
+const signIn = dispatch => async ({ email, password }) => {
+    await signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-        // Signed in 
+            // Signed in 
             const user = userCredential.user;
-            AsyncStorage.setItem('accessToken', user.accessToken )
-            
+            AsyncStorage.setItem('accessToken', user.accessToken)
+
             dispatch({
-                type:'signin',
+                type: 'signin',
                 payload: user.accessToken
             });
             navigate('homeFlow')
@@ -68,29 +68,30 @@ import { navigate } from "../navigationActionsRef";
             const errorCode = error.code;
             const errorMessage = error.message;
             console.log(errorCode)
-        });     
-    };
+        });
+};
 
-    const signout = dispatch => async () => {
-        await AsyncStorage.removeItem('accessToken')
-        signOut(auth);
-        dispatch({type: 'signout'})
-        navigate('SignIn')
+const signout = dispatch => async () => {
+    await AsyncStorage.removeItem('accessToken')
+    signOut(auth);
+    dispatch({ type: 'signout' })
+    navigate('SignIn')
 };
 
 const tryLocalSignin = dispatch => async () => {
     const token = await AsyncStorage.getItem('accessToken');
     if (token) {
-        dispatch({ type: 'signin', payload: token});
+        dispatch({ type: 'signin', payload: token });
+
         navigate('homeFlow');
     } else {
         console.log('no token')
-        navigate('SignIn')
+        navigate('logInFlow')
     };
 };
 
-export const {Provider, Context} = createDataContext(
+export const { Provider, Context } = createDataContext(
     authReducer,
-    {signIn, signUp, signout, tryLocalSignin},
-    { accessToken: null, errorMessage:'' } 
+    { signIn, signUp, signout, tryLocalSignin },
+    { accessToken: null, errorMessage: '' }
 );
